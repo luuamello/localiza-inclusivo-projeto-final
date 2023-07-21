@@ -42,7 +42,9 @@ const buscarRestaurantePorCidade = async (req, res) => {
 const restaurantesComRampasDeAcesso = async (req, res) => {
   try {
     const { rampasAcesso } = req.query;
-    const findRampa = await RestauranteModel.find({ rampasAcesso: rampasAcesso });
+    const findRampa = await RestauranteModel.find({
+      rampasAcesso: rampasAcesso,
+    });
     res.status(200).json(findRampa);
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -52,7 +54,9 @@ const restaurantesComRampasDeAcesso = async (req, res) => {
 const banheirosAcessiveis = async (req, res) => {
   try {
     const { banheirosAcessiveis } = req.query;
-    const findBanheirosAcessiveis = await RestauranteModel.find({ banheirosAcessiveis: banheirosAcessiveis });
+    const findBanheirosAcessiveis = await RestauranteModel.find({
+      banheirosAcessiveis: banheirosAcessiveis,
+    });
     res.status(200).json(findBanheirosAcessiveis);
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -62,7 +66,9 @@ const banheirosAcessiveis = async (req, res) => {
 const restaurantesComCardapioBraile = async (req, res) => {
   try {
     const { cardapioBraile } = req.query;
-    const findCardapio = await RestauranteModel.find({ cardapioBraile:cardapioBraile });
+    const findCardapio = await RestauranteModel.find({
+      cardapioBraile: cardapioBraile,
+    });
     res.status(200).json(findCardapio);
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -72,7 +78,9 @@ const restaurantesComCardapioBraile = async (req, res) => {
 const restaurantesComInterpreteLibras = async (req, res) => {
   try {
     const { interpreteLibras } = req.query;
-    const findLibras = await RestauranteModel.find({interpreteLibras:interpreteLibras });
+    const findLibras = await RestauranteModel.find({
+      interpreteLibras: interpreteLibras,
+    });
     res.status(200).json(findLibras);
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -82,7 +90,9 @@ const restaurantesComInterpreteLibras = async (req, res) => {
 const restaurantesComCardapioAutista = async (req, res) => {
   try {
     const { cardapioAutista } = req.query;
-    const findCardapio = await RestauranteModel.find({cardapioAutista:cardapioAutista });
+    const findCardapio = await RestauranteModel.find({
+      cardapioAutista: cardapioAutista,
+    });
     res.status(200).json(findCardapio);
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -92,7 +102,9 @@ const restaurantesComCardapioAutista = async (req, res) => {
 const restaurantesComAbafador = async (req, res) => {
   try {
     const { foneAbafadorDeSons } = req.query;
-    const findFone = await RestauranteModel.find({foneAbafadorDeSons:foneAbafadorDeSons });
+    const findFone = await RestauranteModel.find({
+      foneAbafadorDeSons: foneAbafadorDeSons,
+    });
     res.status(200).json(findFone);
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -163,27 +175,30 @@ const atualizarRestaurante = async (req, res) => {
       atendimentoPrioritario,
     } = req.body;
 
-    const atualizarRestaurante = await RestauranteModel.findByIdAndUpdate(req.params.id, {
-      nome,
-      endereco,
-      cidade,
-      estado,
-      contato,
-      espacoKids,
-      rampasAcesso,
-      banheirosAcessiveis,
-      cardapioBraile,
-      interpreteLibras,
-      cardapioAutista,
-      fonesAbafadorDeSons,
-      atendimentoPrioritario,
-    });
+    const atualizarRestaurante = await RestauranteModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        nome,
+        endereco,
+        cidade,
+        estado,
+        contato,
+        espacoKids,
+        rampasAcesso,
+        banheirosAcessiveis,
+        cardapioBraile,
+        interpreteLibras,
+        cardapioAutista,
+        fonesAbafadorDeSons,
+        atendimentoPrioritario,
+      }
+    );
 
-    res
-      .status(200)
-      .json({ message: "Restaurate atualizado com sucesso", atualizarRestaurante });
+    res.status(200).json({
+        message: "Restaurante atualizado com sucesso", atualizarRestaurante,
+      });
   } catch (error) {
-    res.status(500).json({ message: "Not updated" });
+    res.status(500).json({ message: "Erro ao atualizar" });
   }
 };
 
