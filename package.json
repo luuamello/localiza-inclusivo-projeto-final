@@ -1,11 +1,13 @@
 {
   "name": "localiza-inclusivo-projeto-final",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Projeto final para o bootcamp de back end da {Reprograma}. Trata-se de uma API que localiza restaurantes e possui acessibilidades para PCDs ",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "test:watch": "jest --watchAll",
+    "test": "jest",
+    "start": "nodemon server.js",
+    "swagger-autogen": "node swagger.js"
   },
   "keywords": [],
   "author": "",
