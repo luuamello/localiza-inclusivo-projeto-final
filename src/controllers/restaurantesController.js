@@ -1,4 +1,6 @@
 const RestauranteModel = require("../models/restaurantesModel");
+const jwt = require("jsonwebtoken");
+const SECRET = process.env.SECRET;
 
 const listaRestaurantes = async (req, res) => {
   try {
@@ -113,71 +115,18 @@ const restaurantesComAbafador = async (req, res) => {
 
 const adicionarRestaurante = async (req, res) => {
   try {
-    const {
-      nome,
-      endereco,
-      cidade,
-      estado,
-      contato,
-      espacoKids,
-      rampasAcesso,
-      banheirosAcessiveis,
-      cardapioBraile,
-      interpreteLibras,
-      cardapioAutista,
-      fonesAbafadorDeSons,
-      atendimentoPrioritario,
-    } = req.body;
+    const authHeader = req.get("authorization");
+    if (!authHeader) {
+      return res.status(401).send("Você esqueceu o token!");
+    }
 
-    const newRestaurante = new RestauranteModel({
-      nome,
-      endereco,
-      cidade,
-      estado,
-      contato,
-      espacoKids,
-      rampasAcesso,
-      banheirosAcessiveis,
-      cardapioBraile,
-      interpreteLibras,
-      cardapioAutista,
-      fonesAbafadorDeSons,
-      atendimentoPrioritario,
-    });
+    const token = authHeader.split(" ")[1];
 
-    const salvaRestaurante = await newRestaurante.save();
-    res.status(201).json({
-      message: "Novo restaurante adicionado",
-      salvaRestaurante,
-    });
-  } catch (err) {
-    res.status(500).json({
-      message: err.message,
-    });
-  }
-};
-
-const atualizarRestaurante = async (req, res) => {
-  try {
-    const {
-      nome,
-      endereco,
-      cidade,
-      estado,
-      contato,
-      espacoKids,
-      rampasAcesso,
-      banheirosAcessiveis,
-      cardapioBraile,
-      interpreteLibras,
-      cardapioAutista,
-      fonesAbafadorDeSons,
-      atendimentoPrioritario,
-    } = req.body;
-
-    const atualizarRestaurante = await RestauranteModel.findByIdAndUpdate(
-      req.params.id,
-      {
+    jwt.verify(token, SECRET, async function (erro) {
+      if (erro) {
+        return res.status(403).send("Acesso não autorizado");
+      }
+      const {
         nome,
         endereco,
         cidade,
@@ -191,12 +140,90 @@ const atualizarRestaurante = async (req, res) => {
         cardapioAutista,
         fonesAbafadorDeSons,
         atendimentoPrioritario,
-      }
-    );
+      } = req.body;
 
-    res.status(200).json({
-        message: "Restaurante atualizado com sucesso", atualizarRestaurante,
+      const newRestaurante = new RestauranteModel({
+        nome,
+        endereco,
+        cidade,
+        estado,
+        contato,
+        espacoKids,
+        rampasAcesso,
+        banheirosAcessiveis,
+        cardapioBraile,
+        interpreteLibras,
+        cardapioAutista,
+        fonesAbafadorDeSons,
+        atendimentoPrioritario,
       });
+
+      const salvaRestaurante = await newRestaurante.save();
+      res.status(201).json({
+        message: "Novo restaurante adicionado",
+        salvaRestaurante,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: err.message,
+    });
+  }
+};
+
+const atualizarRestaurante = async (req, res) => {
+  try {
+    const authHeader = req.get("authorization");
+    if (!authHeader) {
+      return res.status(401).send("Você esqueceu o token!");
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    jwt.verify(token, SECRET, async function (erro) {
+      if (erro) {
+        return res.status(403).send("Acesso não autorizado");
+      }
+      const {
+        nome,
+        endereco,
+        cidade,
+        estado,
+        contato,
+        espacoKids,
+        rampasAcesso,
+        banheirosAcessiveis,
+        cardapioBraile,
+        interpreteLibras,
+        cardapioAutista,
+        fonesAbafadorDeSons,
+        atendimentoPrioritario,
+      } = req.body;
+
+      const atualizarRestaurante = await RestauranteModel.findByIdAndUpdate(
+        req.params.id,
+        {
+          nome,
+          endereco,
+          cidade,
+          estado,
+          contato,
+          espacoKids,
+          rampasAcesso,
+          banheirosAcessiveis,
+          cardapioBraile,
+          interpreteLibras,
+          cardapioAutista,
+          fonesAbafadorDeSons,
+          atendimentoPrioritario,
+        }
+      );
+
+      res.status(200).json({
+        message: "Restaurante atualizado com sucesso",
+        atualizarRestaurante,
+      });
+    });
   } catch (error) {
     res.status(500).json({ message: "Erro ao atualizar" });
   }
@@ -204,10 +231,22 @@ const atualizarRestaurante = async (req, res) => {
 
 const apagarRestaurante = async (req, res) => {
   try {
-    const { id } = req.params;
-    const deleteRestaurante = await RestauranteModel.findByIdAndDelete(id);
-    const message = `Restaurante ${deleteRestaurante.nome} deletado`;
-    res.status(200).json({ message });
+    const authHeader = req.get("authorization");
+    if (!authHeader) {
+      return res.status(401).send("Você esqueceu o token!");
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    jwt.verify(token, SECRET, async function (erro) {
+      if (erro) {
+        return res.status(403).send("Acesso não autorizado");
+      }
+      const { id } = req.params;
+      const deleteRestaurante = await RestauranteModel.findByIdAndDelete(id);
+      const message = `Restaurante ${deleteRestaurante.nome} deletado`;
+      res.status(200).json({ message });
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });

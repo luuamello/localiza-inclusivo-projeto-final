@@ -1,6 +1,5 @@
 const loginModel = require("../models/loginModel");
 const bcrypt = require("bcrypt");
-
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 
@@ -31,20 +30,32 @@ const listaLogins = async (req, res) => {
 
 const atualizaLogin = async (req, res) => {
   try {
-    const { nome, email, senha } = req.body;
-
-    const { id } = req.params;
-    const buscaUsuario = await loginModel.findById(id);
-    if (!buscaUsuario) {
-      return res.status(404).json({ message: "Usuário não foi encontrado!" });
+    const authHeader = req.get("authorization");
+    if (!authHeader) {
+      return res.status(401).send("Você esqueceu o token!");
     }
-    buscaUsuario.email = email || buscaUsuario.email;
-    buscaUsuario.senha = senha || buscaUsuario.senha;
-    buscaUsuario.name = nome || buscaUsuario.nome;
-    const salvaLogin = await buscaUsuario.save();
-    res
-      .status(200)
-      .json({ message: "Usuário atualizado com sucesso", salvaLogin });
+
+    const token = authHeader.split(" ")[1];
+
+    jwt.verify(token, SECRET, async function (erro) {
+      if (erro) {
+        return res.status(403).send("Acesso não autorizado");
+      }
+      const { nome, email, senha } = req.body;
+
+      const { id } = req.params;
+      const buscaUsuario = await loginModel.findById(id);
+      if (!buscaUsuario) {
+        return res.status(404).json({ message: "Usuário não foi encontrado!" });
+      }
+      buscaUsuario.email = email || buscaUsuario.email;
+      buscaUsuario.senha = senha || buscaUsuario.senha;
+      buscaUsuario.name = nome || buscaUsuario.nome;
+      const salvaLogin = await buscaUsuario.save();
+      res
+        .status(200)
+        .json({ message: "Usuário atualizado com sucesso", salvaLogin });
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message });
@@ -53,15 +64,27 @@ const atualizaLogin = async (req, res) => {
 
 const deletaPorId = async (req, res) => {
   try {
-    const { id } = req.params;
-    await loginModel.findByIdAndDelete(id);
-    const message = `O usuário com o ${id} foi delatado com sucesso!`;
-    res.status(200).json({ message });
+    const authHeader = req.get("authorization");
+    if (!authHeader) {
+      return res
+        .status(401)
+        .send("Você esqueceu o token!");
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    jwt.verify(token, SECRET, async function (erro) {
+      if (erro) {
+        return res.status(403).send("Acesso não autorizado");
+      }
+      const { id } = req.params;
+      await loginModel.findByIdAndDelete(id);
+      const message = `O usuário com o ${id} foi delatado com sucesso!`;
+      res.status(200).json({ message });
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({
-      message: error.message,
-    });
+    res.status(500).json({ message: error.message });
   }
 };
 
