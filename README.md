@@ -10,20 +10,30 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 
 #### **Para o Restaurante**
 
-[x] Cadastra um novo restaurante
-[x] Lista restaurantes
-[x] Visualiza restaurante pelo nome
-[x] Visualiza restaurante pela localização (endereço, cidade ou estado)
-[x] Visualiza restaurante com a acessibilidade necessária
-[x] Atualiza dados do restaurante 
-[x] Remove um restaurante específico
+✔️ Cadastra um novo restaurante
+
+✔️ Lista restaurantes
+
+✔️ Visualiza restaurante pelo nome
+
+✔️ Visualiza restaurante pela localização (endereço, cidade ou estado)
+
+✔️ Visualiza restaurante com a acessibilidade necessária
+
+✔️ Atualiza dados do restaurante 
+
+✔️ Remove um restaurante específico
 
 #### **Para o Login**
 
-[x] Cadastra um novo usuário
-[x] Lista todos os usuários
-[x] Atualiza um dado específico do usuário
-[x] Remove um usuário específico
+✔️ Cadastra um novo usuário
+
+✔️ Lista todos os usuários
+
+✔️ Atualiza um dado específico do usuário
+
+✔️ Remove um usuário específico
+
 
 ## 📁 **Arquitetura MVC**
 
