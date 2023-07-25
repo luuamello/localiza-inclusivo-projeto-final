@@ -1,10 +1,14 @@
 # Localiza Inclusivo Projeto-Final
 
+<br>
+
 ## 🌈 **Apresentação** 
 
 O **Localiza Inclusivo** é um projeto de conclusão do bootcamp de back-end da Turma On22 da [{Reprograma}](https://www.reprograma.com.br/). É uma API desenvolvida com o objetivo de localizar restaurantes, mas com um diferencial, ela também fornece informações do restaurante se contém acessibilidades para PCD ( Pessoa Com Deficiência). Na intenção de  garantir que todos possam desfrutar da experiência de sair para comer, independentemente de suas necessidades específicas.
 
-Através dessa API, fica fácil encontrar restaurantes próximos que oferecem recursos e instalações adequadas para acomodar PCDs. Com um simples clique, terá acesso a informações detalhadas sobre cada o restaurante, como rampas de acesso, banheiros adaptados, cardápios em braille, entre outros recursos inclusivos.
+Através dessa API, fica fácil encontrar restaurantes próximos que oferecem recursos e instalações adequadas para acomodar PCDs. Com um simples clique, terá acesso a informações detalhadas sobre cada restaurante, como rampas de acesso, banheiros adaptados, cardápios em braille, entre outros recursos inclusivos.
+
+<br>
 
 ## ✨ **Funcionalidades**
 
@@ -34,14 +38,19 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 
 ✔️ Remove um usuário específico
 
+<br>
+
+## 📚 **Documentação**
+
+📝 [Swagger](https://localiza-inclusivo.onrender.com/minha-rota-de-documentacao/)
+
+<br>
 
 ## 📁 **Arquitetura MVC**
 
 ```
   📁 localiza-inclusivo-projeto-final             
   |-  📁 node_modules
-  |-  📁 Swagger    
-  |         |- 📄 swagger_output.json   
   |-  📁 src  
   |    |- 📁 controllers 
   |         |- 📄 loginController.js
@@ -55,6 +64,8 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
   |         |- 📄 loginRoutes.js     
   |         |- 📄 restauranteRoutes.js   
   |    |- 📄 app.js  
+  |-  📁 Swagger    
+  |         |- 📄 swagger_output.json   
   |-  📁 test 
   |         |- 📄 restaurante.test.js
   |-  📄 .env
@@ -67,6 +78,8 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
   |-  📄 Swagger.js    
   ```
 
+<br>
+
   ## 🛠️ **Dependencias e Tecnologias** 
 
 - JavaScript
@@ -75,19 +88,20 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 - MongoDB
 - Swagger
 - Postman
-- express
-- nodemon
-- dotenv-safe
-- cors
-- bcrypt
+- Express
+- Nodemon
+- Dotenv-safe
+- Cors
+- Bcrypt
 - jwt
-- mongoose
-- jest
+- Mongoose
+- Jest
+- Render
+
 <br>
 
 ## 📌 **Rotas**
 
-<br>
 
 
 ### - Restaurante
@@ -138,8 +152,11 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 <br>
 
 ## 💜 **Autora**
+<p align="center">Desenvolvido por:</p>
 
-<p align="center"> Desenvolvido por <a href="https://www.linkedin.com/in/luanamelo97/" target="_blank"><img src="https://img.shields.io/badge/-luanamelo97-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/luanamelo97//" target="_blank"></a> </p>
+<p align="center"><a href="https://www.linkedin.com/in/luanamelo97/" target="_blank"><img src="https://img.shields.io/badge/-Luana Melo-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/luanamelo97//" target="_blank"></a> </p>
+
+<p align="center"><a href="https://www.instagram.com/luuamello/" target="_blank"><img src="https://img.shields.io/badge/-Luana Melo-E4405F?style=for-the-badge&logo=instagram&logoColor=white&link=https://www.instagram.com/luuamello//" target="_blank"></a> </p>
 
 <br>
 
@@ -147,10 +164,7 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 
 - [Emojis](https://emojipedia.org/)
 
-
 <br>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/84551213/171416454-ab93ab7f-e5a0-4276-81ec-4f5cb79dff31.png" alt="logo da reprograma" border="0" width = "200" /> <p align="center"></p>
-
-<br>
