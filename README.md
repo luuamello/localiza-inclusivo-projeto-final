@@ -103,7 +103,6 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 ## 📌 **Rotas**
 
 
-
 ### - Restaurante
 
 | Verbo  |   EndPoint          | Descrição da Rota                           | Status | Auth |
