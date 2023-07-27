@@ -44,6 +44,9 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 
 📝 [Swagger](https://localiza-inclusivo.onrender.com/minha-rota-de-documentacao/)
 
+📝 [Apresentação](https://www.canva.com/design/DAFprT60cLM/zefkiBGu74TVf7fZFksf8w/edit?utm_content=DAFprT60cLM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+
 <br>
 
 ## 📁 **Arquitetura MVC**
@@ -142,7 +145,7 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 ## 🌟 **Instalação e Contribuição no projeto** 
 
 1. Faça um **fork** do projeto.
-2. Realize o clone do projeto através do `git clone <link_do_fork_do_repositorio>`
+2. Realize o clone do projeto através do `git clone https://github.com/luuamello/localiza-inclusivo-projeto-final.git`
 3. Crie uma nova branch com as suas alterações: `git checkout -b minha-branch`
 4. Instale as dependências necessárias à execução da API através do comando `npm install`
 5. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: Minha contribuição"`
