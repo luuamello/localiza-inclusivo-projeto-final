@@ -4,7 +4,7 @@
 
 ## 🌈 **Apresentação** 
 
-O **Localiza Inclusivo** é um projeto de conclusão do bootcamp de back-end da Turma On22 da [{Reprograma}](https://www.reprograma.com.br/). É uma API desenvolvida com o objetivo de localizar restaurantes, mas com um diferencial, ela também fornece informações do restaurante se contém acessibilidades para PCD ( Pessoa Com Deficiência). Na intenção de  garantir que todos possam desfrutar da experiência de sair para comer, independentemente de suas necessidades específicas.
+O **Localiza Inclusivo** é um projeto de conclusão do bootcamp de back-end da Turma On22 da [{Reprograma}](https://www.reprograma.com.br/). É uma API desenvolvida com o objetivo de localizar restaurantes, mas com um diferencial, ela também fornece informações do restaurante se contém acessibilidades para PCD ( Pessoa Com Deficiência). Na intenção de  garantir que todos possam desfrutar da experiência de sair para comer, independentemente de suas necessidades específicas. Contanto também com as avaliações do restaurante.
 
 Através dessa API, fica fácil encontrar restaurantes próximos que oferecem recursos e instalações adequadas para acomodar PCDs. Com um simples clique, terá acesso a informações detalhadas sobre cada restaurante, como rampas de acesso, banheiros adaptados, cardápios em braille, entre outros recursos inclusivos.
 
@@ -27,6 +27,16 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 ✔️ Atualiza dados do restaurante 
 
 ✔️ Remove um restaurante específico
+
+#### **Para a Avaliação**
+
+✔️ Cadastra uma nova avaliação
+
+✔️ Lista todas as avaliações
+
+✔️ Atualiza um dado específico da avaliação
+
+✔️ Remove uma avaliação específica
 
 #### **Para o Login**
 
@@ -56,20 +66,24 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
   |-  📁 node_modules
   |-  📁 src  
   |    |- 📁 controllers 
+  |         |- 📄 avaliacaoController.js
   |         |- 📄 loginController.js
   |         |- 📄 restauranteController.js    
   |    |- 📁 database   
   |         |- 📄 mongooseConnect.js    
   |    |- 📁 models  
-  |         |- 📄 loginModel.js    
+  |         |- 📄 avaliacaoModel.js
+  |         |- 📄 loginModel.js      
   |         |- 📄 restauranteModel.js
   |    |- 📁 routes  
-  |         |- 📄 loginRoutes.js     
+  |         |- 📄 avaliacaoRoutes.js
+  |         |- 📄 loginRoutes.js      
   |         |- 📄 restauranteRoutes.js   
   |    |- 📄 app.js  
   |-  📁 Swagger    
   |         |- 📄 swagger_output.json   
   |-  📁 test 
+  |         |- 📄 avaliacao.test.js
   |         |- 📄 restaurante.test.js
   |-  📄 .env
   |-  📄 .env.example 
@@ -135,6 +149,17 @@ Através dessa API, fica fácil encontrar restaurantes próximos que oferecem re
 | PATCH  | /atualiza/:id       | Altera algum dado do usuário                |   200  |  ✔️  |
 | DELETE | /:id                | Deleta usuário pelo ID                      |   200  |  ✔️  |
 | POST   | /login              | Login de usuário                            |   200  |  ✔️  |
+<br>
+
+### - Login
+
+| Verbo  |   EndPoint          | Descrição da Rota                           | Status | Auth |
+| ------ | ------------------- | ------------------------------------------- | ------ |----- |
+| GET    | /avaliacoes         | Visualiza todas as avaliações               |   200  |  ❌  |
+| GET    | /:id                | Visualiza avaliação pelo ID                 |   200  |  ❌  |
+| POST   | /adiciona           | Adiciona uma avaliação                      |   200  |  ✔️  |
+| PATCH  | /atualizar/:id      | Altera algum dado da avaliação              |   200  |  ✔️  |
+| DELETE | /:id                | Deleta avaliação pelo ID                    |   200  |  ✔️  |
 <br>
 
 > Você pode testar as rotas Get, Post, Patch e Delete através da ferramenta Postman. Não esqueça de passar o token no bearer token no header de autenticação.
